@@ -5,6 +5,10 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{swjtuextra}
 
+\renewcommand {\thetable} {\thechapter{}-\arabic{table}}
+\renewcommand {\thefigure} {\thechapter{}-\arabic{figure}}
+\renewcommand {\theequation} {\thechapter{}-\arabic{equation}}
+
 % 数学符号：
 \RequirePackage{amsmath,amsthm}
 \newcommand\eu{\mathrm{e}}
@@ -82,7 +86,11 @@
   \renewcommand\algorithmcfname{Algorithm}
 \else
   \renewcommand{\listalgorithmcfname}{算法索引}
-  \renewcommand{\algorithmcfname}{算法}
+  %\renewcommand{\algorithmcfname}{算法}
+  \renewcommand{\algorithmcfname}{算法\thechapter{}-}
+  \renewcommand{\fnum@algocf}{\algorithmcfname\thealgocf}
+  \renewcommand{\thealgocf}{\@arabic\c@algocf}
+
 \fi
 % 使算法目录另起一页
 \let\swjtu@save@listofalgorithms=\listofalgorithms
